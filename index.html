@@ -290,6 +290,37 @@
       transition: background 0.2s;
     }
     .pillar-card:hover { background: var(--surface-2); }
+    /* Showcase gallery */
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 24px;
+      margin-top: 56px;
+    }
+    .shot-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .shot-card:hover { border-color: var(--border-light); transform: translateY(-2px); }
+    .shot-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-bottom: 1px solid var(--border);
+    }
+    .shot-card figcaption {
+      padding: 18px 22px;
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: var(--text-2);
+    }
+    .shot-card figcaption strong { color: var(--text); }
+    .shot-card figcaption code {
+      font-family: monospace; font-size: 0.85em; color: var(--amber);
+    }
     .pillar-icon {
       width: 44px;
       height: 44px;
@@ -658,6 +689,7 @@
       </a>
       <ul class="nav-links">
         <li class="hide-mobile"><a href="#pillars">Architecture</a></li>
+        <li class="hide-mobile"><a href="#showcase">See it</a></li>
         <li class="hide-mobile"><a href="#open-source">Open Source</a></li>
         <li class="hide-mobile"><a href="blog/">Blog</a></li>
         <li>
@@ -796,6 +828,48 @@
           Genesis hash &middot; Amendment log &middot; Audit trail
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Showcase ─── -->
+<section class="section" id="showcase">
+  <div class="container">
+    <div style="text-align:center; max-width:680px; margin:0 auto;">
+      <span class="section-label">See it in action</span>
+      <h2 class="section-title">A sovereign agent, end to end</h2>
+      <p class="section-sub">
+        Every screenshot is the real Sovereign Console running on a machine you control &mdash;
+        identity, governance, memory, privacy, and permissions, with nothing hidden in a cloud
+        you don&rsquo;t own.
+      </p>
+    </div>
+
+    <div class="showcase-grid">
+      <figure class="shot-card">
+        <img src="screenshots/identity.png" alt="Identity panel showing the agent's did:pkh decentralized identifier" loading="lazy" width="1440" height="869">
+        <figcaption><strong>Portable DID identity.</strong> Born with a <code>did:pkh</code> keypair the agent owns &mdash; not issued by any platform.</figcaption>
+      </figure>
+      <figure class="shot-card">
+        <img src="screenshots/constitution.png" alt="Constitution panel with the Kestrel Constitution and its verified hash" loading="lazy" width="1440" height="869">
+        <figcaption><strong>Constitutional governance.</strong> A hashed, tamper-evident constitution checked on every interaction.</figcaption>
+      </figure>
+      <figure class="shot-card">
+        <img src="screenshots/memory.png" alt="Knowledge graph panel showing typed memory nodes" loading="lazy" width="1440" height="869">
+        <figcaption><strong>Persistent memory you own.</strong> A local knowledge graph &mdash; encrypted, portable, deletable on demand.</figcaption>
+      </figure>
+      <figure class="shot-card">
+        <img src="screenshots/privacy.png" alt="Chat header in EPHEMERAL privacy mode using a local Ollama model" loading="lazy" width="1440" height="869">
+        <figcaption><strong>Privacy as a spectrum.</strong> EPHEMERAL routes to a local model only; NORMAL can use the cloud &mdash; you choose, per agent.</figcaption>
+      </figure>
+      <figure class="shot-card">
+        <img src="screenshots/sovereignty.png" alt="Sovereignty export result — a portable snapshot of the agent" loading="lazy" width="1440" height="869">
+        <figcaption><strong>Export everything, anytime.</strong> DID, constitution, memory, and history in one portable snapshot &mdash; restore it anywhere.</figcaption>
+      </figure>
+      <figure class="shot-card">
+        <img src="screenshots/security.png" alt="Security panel showing a blocked action after a permission is denied" loading="lazy" width="1440" height="869">
+        <figcaption><strong>Permission enforcement.</strong> Deny a capability and the agent is blocked &mdash; with an audit trail of every attempt.</figcaption>
+      </figure>
     </div>
   </div>
 </section>
