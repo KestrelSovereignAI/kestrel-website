@@ -290,52 +290,6 @@
       line-height: 1.65;
     }
 
-    /* ─── Three Pillars ─── */
-    /* ─── Fact rows — a centered, stacked list, not a card grid ─── */
-    .fact-rows {
-      max-width: 760px;
-      margin: 48px auto 0;
-    }
-    .fact-row {
-      display: flex;
-      gap: 36px;
-      padding: 30px 0;
-      border-top: 1px solid var(--border);
-      text-align: left;
-    }
-    .fact-rows > .fact-row:last-child {
-      border-bottom: 1px solid var(--border);
-    }
-    .fact-num {
-      font-family: 'Archivo', system-ui, sans-serif;
-      font-size: 2rem;
-      font-weight: 900;
-      color: var(--border-light);
-      width: 64px;
-      flex-shrink: 0;
-      line-height: 1.3;
-    }
-    .fact-content { flex: 1; min-width: 0; }
-    .fact-title {
-      font-family: 'Archivo', system-ui, sans-serif;
-      font-size: 1.1875rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 10px;
-      letter-spacing: -0.01em;
-    }
-    .fact-body {
-      font-size: 0.9375rem;
-      color: var(--text-2);
-      line-height: 1.7;
-    }
-    .fact-body .emphasis { color: var(--text); font-weight: 600; }
-    .fact-detail {
-      margin-top: 14px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8125rem;
-      color: var(--text-3);
-    }
     /* Showcase gallery */
     .showcase-grid {
       display: grid;
@@ -643,6 +597,13 @@
       color: var(--text-2);
       line-height: 1.6;
     }
+    .oss-card-body .emphasis { color: var(--text); font-weight: 600; }
+    .oss-card-detail {
+      margin-top: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-3);
+    }
 
     /* ─── Blog preview ─── */
     .blog-preview-head {
@@ -847,7 +808,7 @@
 <!-- ─── Product / Traction / Stage ─── -->
 <section class="section" id="company">
   <div class="container">
-    <div style="text-align:center; max-width:640px; margin:0 auto;">
+    <div style="max-width:640px; margin:0 auto 0 0;">
       <span class="section-label">About</span>
       <h2 class="section-title">Real product. Real deployment.</h2>
       <p class="section-sub">
@@ -856,41 +817,35 @@
       </p>
     </div>
 
-    <div class="fact-rows">
-      <div class="fact-row">
-        <div class="fact-num">01</div>
-        <div class="fact-content">
-          <div class="fact-title">A framework, and a product built on it</div>
-          <div class="fact-body">
-            The open-source framework below &mdash; identity, memory, governance &mdash; is the
-            infrastructure layer. On top of it sits <strong style="color:var(--text);">Kestrel-RCS</strong>,
-            our first Companion + Navigator implementation: a companion that checks in with
-            patients between clinical interactions, and a navigator that surfaces concerns to
-            their human care team &mdash; without replacing clinical judgment.
-          </div>
+    <div class="oss-grid">
+      <div class="oss-card">
+        <div class="oss-card-icon">🧱</div>
+        <div class="oss-card-title">A framework, and a product built on it</div>
+        <div class="oss-card-body">
+          The open-source framework below &mdash; identity, memory, governance &mdash; is the
+          infrastructure layer. On top of it sits <strong style="color:var(--text);">Kestrel-RCS</strong>,
+          our first Companion + Navigator implementation: a companion that checks in with
+          patients between clinical interactions, and a navigator that surfaces concerns to
+          their human care team &mdash; without replacing clinical judgment.
         </div>
       </div>
 
-      <div class="fact-row">
-        <div class="fact-num">02</div>
-        <div class="fact-content">
-          <div class="fact-title">Live in a real clinical workflow</div>
-          <div class="fact-body">
-            Kestrel-RCS is running in a production pilot with a home health provider, embedded
-            directly in their remote patient monitoring platform &mdash; real patients, real care
-            staff, real data. Not a demo environment.
-          </div>
+      <div class="oss-card">
+        <div class="oss-card-icon">🏥</div>
+        <div class="oss-card-title">Live in a real clinical workflow</div>
+        <div class="oss-card-body">
+          Kestrel-RCS is running in a production pilot with a home health provider, embedded
+          directly in their remote patient monitoring platform &mdash; real patients, real care
+          staff, real data. Not a demo environment.
         </div>
       </div>
 
-      <div class="fact-row">
-        <div class="fact-num">03</div>
-        <div class="fact-content">
-          <div class="fact-title">Early, and moving toward revenue</div>
-          <div class="fact-body">
-            We're early-stage and bootstrapped. The pilot above is converting to a paid, ongoing
-            partnership this fall &mdash; our first commercial contract.
-          </div>
+      <div class="oss-card">
+        <div class="oss-card-icon">🌱</div>
+        <div class="oss-card-title">Early, and moving toward revenue</div>
+        <div class="oss-card-body">
+          We're early-stage and bootstrapped. The pilot above is converting to a paid, ongoing
+          partnership this fall &mdash; our first commercial contract.
         </div>
       </div>
     </div>
@@ -938,7 +893,7 @@
 <!-- ─── Three Pillars ─── -->
 <section class="section" id="pillars">
   <div class="container">
-    <div style="text-align:center; max-width:640px; margin:0 auto;">
+    <div style="max-width:640px; margin:0 auto 0 0;">
       <span class="section-label">Architecture</span>
       <h2 class="section-title">Three pillars of sovereignty</h2>
       <p class="section-sub">
@@ -947,48 +902,42 @@
       </p>
     </div>
 
-    <div class="fact-rows">
-      <div class="fact-row">
-        <div class="fact-num">I</div>
-        <div class="fact-content">
-          <div class="fact-title">Portable DID identity</div>
-          <div class="fact-body">
-            Every agent is born with a <code style="font-family:monospace; font-size:0.875em; color:#F8C96B;">did:pkh</code> decentralized identifier &mdash; a
-            cryptographic keypair using the same <code style="font-family:monospace; font-size:0.875em; color:#F8C96B;">secp256k1</code> curve as Ethereum.
-            The agent's identity is not issued by any platform. It's generated locally,
-            owned by the user, and portable to any environment.
-          </div>
-          <div class="fact-detail">did:pkh:eip155:1:0x8955b8cB&hellip;</div>
+    <div class="oss-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+      <div class="oss-card">
+        <div class="oss-card-icon">🔑</div>
+        <div class="oss-card-title">Portable DID identity</div>
+        <div class="oss-card-body">
+          Every agent is born with a <code style="font-family:monospace; font-size:0.875em; color:#F8C96B;">did:pkh</code> decentralized identifier &mdash; a
+          cryptographic keypair using the same <code style="font-family:monospace; font-size:0.875em; color:#F8C96B;">secp256k1</code> curve as Ethereum.
+          The agent's identity is not issued by any platform. It's generated locally,
+          owned by the user, and portable to any environment.
         </div>
+        <div class="oss-card-detail">did:pkh:eip155:1:0x8955b8cB&hellip;</div>
       </div>
 
-      <div class="fact-row">
-        <div class="fact-num">II</div>
-        <div class="fact-content">
-          <div class="fact-title">Persistent memory you own</div>
-          <div class="fact-body">
-            Conversations, documents, and relationships are stored in a local SQLite knowledge
-            graph with full-text search and RAG. The memory is yours &mdash; encrypted at rest,
-            portable, and deletable on demand.
-            <br/><br/>
-            <span class="emphasis">The agent's memory doesn't live in our cloud.</span>
-          </div>
-          <div class="fact-detail">SQLite &middot; FTS5 &middot; Encrypted at rest</div>
+      <div class="oss-card">
+        <div class="oss-card-icon">🧠</div>
+        <div class="oss-card-title">Persistent memory you own</div>
+        <div class="oss-card-body">
+          Conversations, documents, and relationships are stored in a local SQLite knowledge
+          graph with full-text search and RAG. The memory is yours &mdash; encrypted at rest,
+          portable, and deletable on demand.
+          <br/><br/>
+          <span class="emphasis">The agent's memory doesn't live in our cloud.</span>
         </div>
+        <div class="oss-card-detail">SQLite &middot; FTS5 &middot; Encrypted at rest</div>
       </div>
 
-      <div class="fact-row">
-        <div class="fact-num">III</div>
-        <div class="fact-content">
-          <div class="fact-title">Constitutional governance</div>
-          <div class="fact-body">
-            Every agent runs under an audited constitution enforced <em>above</em> the LLM &mdash;
-            not inside the model, not in a prompt. Genesis audit on creation.
-            Amendment requires cryptographic signature. The model can't override it.
-            Neither can a bad prompt.
-          </div>
-          <div class="fact-detail">Genesis hash &middot; Amendment log &middot; Audit trail</div>
+      <div class="oss-card">
+        <div class="oss-card-icon">📜</div>
+        <div class="oss-card-title">Constitutional governance</div>
+        <div class="oss-card-body">
+          Every agent runs under an audited constitution enforced <em>above</em> the LLM &mdash;
+          not inside the model, not in a prompt. Genesis audit on creation.
+          Amendment requires cryptographic signature. The model can't override it.
+          Neither can a bad prompt.
         </div>
+        <div class="oss-card-detail">Genesis hash &middot; Amendment log &middot; Audit trail</div>
       </div>
     </div>
   </div>
