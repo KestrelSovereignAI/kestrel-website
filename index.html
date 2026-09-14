@@ -291,22 +291,51 @@
     }
 
     /* ─── Three Pillars ─── */
-    .pillars-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-      margin-top: 56px;
+    /* ─── Fact rows — a centered, stacked list, not a card grid ─── */
+    .fact-rows {
+      max-width: 760px;
+      margin: 48px auto 0;
     }
-    .pillar-card {
-      background: var(--surface);
-      padding: 36px 32px;
-      transition: background 0.2s;
+    .fact-row {
+      display: flex;
+      gap: 36px;
+      padding: 30px 0;
+      border-top: 1px solid var(--border);
+      text-align: left;
     }
-    .pillar-card:hover { background: var(--surface-2); }
+    .fact-rows > .fact-row:last-child {
+      border-bottom: 1px solid var(--border);
+    }
+    .fact-num {
+      font-family: 'Archivo', system-ui, sans-serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--border-light);
+      width: 64px;
+      flex-shrink: 0;
+      line-height: 1.3;
+    }
+    .fact-content { flex: 1; min-width: 0; }
+    .fact-title {
+      font-family: 'Archivo', system-ui, sans-serif;
+      font-size: 1.1875rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+    .fact-body {
+      font-size: 0.9375rem;
+      color: var(--text-2);
+      line-height: 1.7;
+    }
+    .fact-body .emphasis { color: var(--text); font-weight: 600; }
+    .fact-detail {
+      margin-top: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8125rem;
+      color: var(--text-3);
+    }
     /* Showcase gallery */
     .showcase-grid {
       display: grid;
@@ -338,51 +367,6 @@
     .shot-card figcaption code {
       font-family: monospace; font-size: 0.85em; color: var(--amber);
     }
-    .pillar-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-      font-size: 20px;
-    }
-    .icon-blue  { background: rgba(240, 168, 40, 0.12); }
-    .icon-indigo { background: rgba(129, 140, 248, 0.12); }
-    .icon-green { background: rgba(52, 211, 153, 0.12); }
-    .icon-amber { background: rgba(245, 158, 11, 0.12); }
-    .pillar-number {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--text-3);
-      margin-bottom: 8px;
-    }
-    .pillar-title {
-      font-size: 1.125rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 10px;
-      letter-spacing: -0.01em;
-    }
-    .pillar-body {
-      font-size: 0.9375rem;
-      color: var(--text-2);
-      line-height: 1.65;
-    }
-    .pillar-detail {
-      margin-top: 16px;
-      padding-top: 16px;
-      border-top: 1px solid var(--border);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8125rem;
-      color: var(--text-3);
-    }
-    .pillar-body .emphasis {
-      color: var(--text);
-      font-weight: 600;
-    }
-
     /* ─── Companion / Navigator (healthcare) ─── */
     .healthcare-section {
       background: #12100A;
@@ -872,50 +856,41 @@
       </p>
     </div>
 
-    <div class="pillars-grid">
-      <div class="pillar-card">
-        <div class="pillar-icon icon-indigo">
-          <svg width="22" height="22" fill="none" stroke="#F0A828" stroke-width="2" viewBox="0 0 24 24">
-            <path d="M12 2l9 5-9 5-9-5 9-5z"/><path d="M3 12l9 5 9-5M3 17l9 5 9-5"/>
-          </svg>
-        </div>
-        <div class="pillar-number">01 / Product</div>
-        <div class="pillar-title">A framework, and a product built on it</div>
-        <div class="pillar-body">
-          The open-source framework below &mdash; identity, memory, governance &mdash; is the
-          infrastructure layer. On top of it sits <strong style="color:var(--text);">Kestrel-RCS</strong>,
-          our first Companion + Navigator implementation: a companion that checks in with
-          patients between clinical interactions, and a navigator that surfaces concerns to
-          their human care team &mdash; without replacing clinical judgment.
+    <div class="fact-rows">
+      <div class="fact-row">
+        <div class="fact-num">01</div>
+        <div class="fact-content">
+          <div class="fact-title">A framework, and a product built on it</div>
+          <div class="fact-body">
+            The open-source framework below &mdash; identity, memory, governance &mdash; is the
+            infrastructure layer. On top of it sits <strong style="color:var(--text);">Kestrel-RCS</strong>,
+            our first Companion + Navigator implementation: a companion that checks in with
+            patients between clinical interactions, and a navigator that surfaces concerns to
+            their human care team &mdash; without replacing clinical judgment.
+          </div>
         </div>
       </div>
 
-      <div class="pillar-card">
-        <div class="pillar-icon icon-green">
-          <svg width="22" height="22" fill="none" stroke="#34D399" stroke-width="2" viewBox="0 0 24 24">
-            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-          </svg>
-        </div>
-        <div class="pillar-number">02 / Traction</div>
-        <div class="pillar-title">Live in a real clinical workflow</div>
-        <div class="pillar-body">
-          Kestrel-RCS is running in a production pilot with a home health provider, embedded
-          directly in their remote patient monitoring platform &mdash; real patients, real care
-          staff, real data. Not a demo environment.
+      <div class="fact-row">
+        <div class="fact-num">02</div>
+        <div class="fact-content">
+          <div class="fact-title">Live in a real clinical workflow</div>
+          <div class="fact-body">
+            Kestrel-RCS is running in a production pilot with a home health provider, embedded
+            directly in their remote patient monitoring platform &mdash; real patients, real care
+            staff, real data. Not a demo environment.
+          </div>
         </div>
       </div>
 
-      <div class="pillar-card">
-        <div class="pillar-icon icon-amber">
-          <svg width="22" height="22" fill="none" stroke="#F0A828" stroke-width="2" viewBox="0 0 24 24">
-            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
-          </svg>
-        </div>
-        <div class="pillar-number">03 / Stage</div>
-        <div class="pillar-title">Early, and moving toward revenue</div>
-        <div class="pillar-body">
-          We're early-stage and bootstrapped. The pilot above is converting to a paid, ongoing
-          partnership this fall &mdash; our first commercial contract.
+      <div class="fact-row">
+        <div class="fact-num">03</div>
+        <div class="fact-content">
+          <div class="fact-title">Early, and moving toward revenue</div>
+          <div class="fact-body">
+            We're early-stage and bootstrapped. The pilot above is converting to a paid, ongoing
+            partnership this fall &mdash; our first commercial contract.
+          </div>
         </div>
       </div>
     </div>
@@ -972,65 +947,47 @@
       </p>
     </div>
 
-    <div class="pillars-grid">
-      <!-- Pillar 1 -->
-      <div class="pillar-card">
-        <div class="pillar-icon icon-blue">
-          <svg width="22" height="22" fill="none" stroke="#F0A828" stroke-width="2" viewBox="0 0 24 24">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-          </svg>
-        </div>
-        <div class="pillar-number">01 / Identity</div>
-        <div class="pillar-title">Portable DID identity</div>
-        <div class="pillar-body">
-          Every agent is born with a <code style="font-family:monospace; font-size:0.875em; color:#F8C96B;">did:pkh</code> decentralized identifier &mdash; a
-          cryptographic keypair using the same <code style="font-family:monospace; font-size:0.875em; color:#F8C96B;">secp256k1</code> curve as Ethereum.
-          The agent's identity is not issued by any platform. It's generated locally,
-          owned by the user, and portable to any environment.
-        </div>
-        <div class="pillar-detail">
-          did:pkh:eip155:1:0x8955b8cB...
+    <div class="fact-rows">
+      <div class="fact-row">
+        <div class="fact-num">I</div>
+        <div class="fact-content">
+          <div class="fact-title">Portable DID identity</div>
+          <div class="fact-body">
+            Every agent is born with a <code style="font-family:monospace; font-size:0.875em; color:#F8C96B;">did:pkh</code> decentralized identifier &mdash; a
+            cryptographic keypair using the same <code style="font-family:monospace; font-size:0.875em; color:#F8C96B;">secp256k1</code> curve as Ethereum.
+            The agent's identity is not issued by any platform. It's generated locally,
+            owned by the user, and portable to any environment.
+          </div>
+          <div class="fact-detail">did:pkh:eip155:1:0x8955b8cB&hellip;</div>
         </div>
       </div>
 
-      <!-- Pillar 2 -->
-      <div class="pillar-card">
-        <div class="pillar-icon icon-indigo">
-          <svg width="22" height="22" fill="none" stroke="#F0A828" stroke-width="2" viewBox="0 0 24 24">
-            <ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
-          </svg>
-        </div>
-        <div class="pillar-number">02 / Memory</div>
-        <div class="pillar-title">Persistent memory you own</div>
-        <div class="pillar-body">
-          Conversations, documents, and relationships are stored in a local SQLite knowledge
-          graph with full-text search and RAG. The memory is yours &mdash; encrypted at rest,
-          portable, and deletable on demand.
-          <br/><br/>
-          <span class="emphasis">The agent's memory doesn't live in our cloud.</span>
-        </div>
-        <div class="pillar-detail">
-          SQLite &middot; FTS5 &middot; Encrypted at rest
+      <div class="fact-row">
+        <div class="fact-num">II</div>
+        <div class="fact-content">
+          <div class="fact-title">Persistent memory you own</div>
+          <div class="fact-body">
+            Conversations, documents, and relationships are stored in a local SQLite knowledge
+            graph with full-text search and RAG. The memory is yours &mdash; encrypted at rest,
+            portable, and deletable on demand.
+            <br/><br/>
+            <span class="emphasis">The agent's memory doesn't live in our cloud.</span>
+          </div>
+          <div class="fact-detail">SQLite &middot; FTS5 &middot; Encrypted at rest</div>
         </div>
       </div>
 
-      <!-- Pillar 3 -->
-      <div class="pillar-card">
-        <div class="pillar-icon icon-green">
-          <svg width="22" height="22" fill="none" stroke="#34D399" stroke-width="2" viewBox="0 0 24 24">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-          </svg>
-        </div>
-        <div class="pillar-number">03 / Governance</div>
-        <div class="pillar-title">Constitutional governance</div>
-        <div class="pillar-body">
-          Every agent runs under an audited constitution enforced <em>above</em> the LLM &mdash;
-          not inside the model, not in a prompt. Genesis audit on creation.
-          Amendment requires cryptographic signature. The model can't override it.
-          Neither can a bad prompt.
-        </div>
-        <div class="pillar-detail">
-          Genesis hash &middot; Amendment log &middot; Audit trail
+      <div class="fact-row">
+        <div class="fact-num">III</div>
+        <div class="fact-content">
+          <div class="fact-title">Constitutional governance</div>
+          <div class="fact-body">
+            Every agent runs under an audited constitution enforced <em>above</em> the LLM &mdash;
+            not inside the model, not in a prompt. Genesis audit on creation.
+            Amendment requires cryptographic signature. The model can't override it.
+            Neither can a bad prompt.
+          </div>
+          <div class="fact-detail">Genesis hash &middot; Amendment log &middot; Audit trail</div>
         </div>
       </div>
     </div>
