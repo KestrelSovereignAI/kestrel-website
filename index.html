@@ -334,6 +334,7 @@
     .icon-blue  { background: rgba(56, 189, 248, 0.12); }
     .icon-indigo { background: rgba(129, 140, 248, 0.12); }
     .icon-green { background: rgba(52, 211, 153, 0.12); }
+    .icon-amber { background: rgba(245, 158, 11, 0.12); }
     .pillar-number {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.75rem;
@@ -688,6 +689,7 @@
         Kestrel
       </a>
       <ul class="nav-links">
+        <li class="hide-mobile"><a href="#company">About</a></li>
         <li class="hide-mobile"><a href="#pillars">Architecture</a></li>
         <li class="hide-mobile"><a href="#showcase">See it</a></li>
         <li class="hide-mobile"><a href="#open-source">Open Source</a></li>
@@ -707,7 +709,7 @@
   <div class="container">
     <a href="https://github.com/KestrelSovereignAI/kestrel-sovereign" class="badge" target="_blank" rel="noopener">
       <span class="dot"></span>
-      Open source &middot; Launching May 7, 2026
+      Open source &middot; Live in production
     </a>
 
     <h1 class="hero-title">
@@ -723,7 +725,7 @@
 
     <div class="hero-actions">
       <a href="#early-access" class="btn-primary">
-        Get early access
+        Get in touch
         <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
       <a href="https://github.com/KestrelSovereignAI/kestrel-sovereign" class="btn-secondary" target="_blank" rel="noopener">
@@ -735,7 +737,7 @@
     <!-- Proof bar -->
     <div class="proof-bar">
       <div class="proof-item">
-        <div class="proof-number">700+</div>
+        <div class="proof-number">1,400+</div>
         <div class="proof-label">issues shipped</div>
       </div>
       <div class="proof-divider"></div>
@@ -745,13 +747,89 @@
       </div>
       <div class="proof-divider"></div>
       <div class="proof-item">
-        <div class="proof-number">4,000+</div>
+        <div class="proof-number">14,000+</div>
         <div class="proof-label">unit tests</div>
       </div>
       <div class="proof-divider"></div>
       <div class="proof-item">
         <div class="proof-number">Apache 2.0</div>
         <div class="proof-label">open source license</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Company / Product / Traction / Stage ─── -->
+<section class="section" id="company">
+  <div class="container">
+    <div style="text-align:center; max-width:640px; margin:0 auto;">
+      <span class="section-label">About</span>
+      <h2 class="section-title">A small team, a real deployment</h2>
+      <p class="section-sub">
+        Kestrel Sovereign, LLC in four facts &mdash; who we are, what we build,
+        who's using it, and where we are today.
+      </p>
+    </div>
+
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon icon-blue">
+          <svg width="22" height="22" fill="none" stroke="#38BDF8" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+          </svg>
+        </div>
+        <div class="pillar-number">01 / Company</div>
+        <div class="pillar-title">Founder-led, founder-funded</div>
+        <div class="pillar-body">
+          Built by a two-person founding team &mdash; Gabi Oliveira (CEO) and Jason Schulz (CTO)
+          &mdash; self-funded from day one. No venture round, no board to answer to. Just two
+          people building the infrastructure they think agents actually need.
+        </div>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon icon-indigo">
+          <svg width="22" height="22" fill="none" stroke="#818CF8" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M12 2l9 5-9 5-9-5 9-5z"/><path d="M3 12l9 5 9-5M3 17l9 5 9-5"/>
+          </svg>
+        </div>
+        <div class="pillar-number">02 / Product</div>
+        <div class="pillar-title">A framework, and a product built on it</div>
+        <div class="pillar-body">
+          The open-source framework below &mdash; identity, memory, governance &mdash; is the
+          infrastructure layer. On top of it sits <strong style="color:var(--text);">Kestrel-RCS</strong>,
+          an AI care-companion product: it handles day-to-day patient check-ins and routes
+          anything safety-relevant straight to a human care team.
+        </div>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon icon-green">
+          <svg width="22" height="22" fill="none" stroke="#34D399" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+          </svg>
+        </div>
+        <div class="pillar-number">03 / Traction</div>
+        <div class="pillar-title">Live in a real clinical workflow</div>
+        <div class="pillar-body">
+          Kestrel-RCS is running in a production pilot with a home health provider, embedded
+          directly in their remote patient monitoring platform &mdash; real patients, real care
+          staff, real data. Not a demo environment.
+        </div>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon icon-amber">
+          <svg width="22" height="22" fill="none" stroke="#F59E0B" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+          </svg>
+        </div>
+        <div class="pillar-number">04 / Stage</div>
+        <div class="pillar-title">Early, and moving toward revenue</div>
+        <div class="pillar-body">
+          We're early-stage and bootstrapped. The pilot above is converting to a paid, ongoing
+          partnership this fall &mdash; our first commercial contract.
+        </div>
       </div>
     </div>
   </div>
@@ -1015,11 +1093,11 @@
 <section class="section cta-section" id="early-access">
   <div class="container" style="max-width:720px;">
     <div class="cta-card">
-      <span class="section-label">Public Launch &middot; May 7, 2026</span>
-      <h2 class="section-title" style="margin-top:12px;">Be first to build on Kestrel</h2>
+      <span class="section-label">Get in touch</span>
+      <h2 class="section-title" style="margin-top:12px;">Building on Kestrel, or evaluating it?</h2>
       <p style="font-size:1.0625rem; color:var(--text-2); line-height:1.65; max-width:520px; margin:0 auto;">
-        We're opening the repo publicly on May 7. Get early access before the public launch &mdash;
-        and if you want a demo, just ask.
+        The framework is open source and live in production today. If you want a demo, or
+        want to talk about what we're building, just ask.
       </p>
 
       <!-- Email form -->
@@ -1035,10 +1113,10 @@
           aria-label="Your email address"
           id="emailInput"
         />
-        <button type="submit" class="btn-cta">Get early access</button>
+        <button type="submit" class="btn-cta">Get in touch</button>
       </form>
       <div class="form-success" id="formSuccess">
-        ✓ Got it &mdash; we'll reach out with access details before May 7.
+        ✓ Got it &mdash; we'll reach out soon.
       </div>
       <p class="form-note">Or email us directly: <a href="mailto:hello@kestrelsovereign.com" style="color:var(--text-2); text-decoration:underline;">hello@kestrelsovereign.com</a></p>
     </div>
@@ -1085,10 +1163,10 @@
         });
         if (!res.ok) throw new Error('form error');
       } else {
-        window.location.href = `mailto:hello@kestrelsovereign.com?subject=Early access request&body=I'd like early access to Kestrel. My email: ${encodeURIComponent(email)}`;
+        window.location.href = `mailto:hello@kestrelsovereign.com?subject=Getting in touch&body=I'd like to talk about Kestrel. My email: ${encodeURIComponent(email)}`;
       }
     } catch (err) {
-      window.location.href = `mailto:hello@kestrelsovereign.com?subject=Early access request&body=I'd like early access to Kestrel. My email: ${encodeURIComponent(email)}`;
+      window.location.href = `mailto:hello@kestrelsovereign.com?subject=Getting in touch&body=I'd like to talk about Kestrel. My email: ${encodeURIComponent(email)}`;
     }
 
     form.style.display = 'none';
