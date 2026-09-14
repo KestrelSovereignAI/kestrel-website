@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Architecture &mdash; Kestrel</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <meta name="description" content="How Kestrel actually works: portable DID identity, a local encrypted memory store, and constitutional governance enforced above the LLM. The technical proof behind the sovereignty claim." />
+  <link rel="canonical" href="https://kestrelsovereign.com/architecture.html" />
+  <meta property="og:title" content="Architecture &mdash; Kestrel" />
+  <meta property="og:description" content="Portable DID identity, encrypted local memory, and constitutional governance enforced above the LLM." />
+  <meta property="og:url" content="https://kestrelsovereign.com/architecture.html" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0A0F; --surface: #12121A; --surface-2: #1A1A22; --border: #26262E; --border-light: #3A3A42;
+      --blue: #F0A828; --green: #34D399; --text: #F5F5F2; --text-2: #C8C4B8; --text-3: #8A8578;
+    }
+    .display { font-family: 'Archivo', system-ui, sans-serif; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, sans-serif; font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 96px 0; }
+    nav { position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border); background: rgba(10,10,15,0.88); backdrop-filter: blur(12px); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .nav-logo { font-weight: 700; font-size: 1.125rem; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+    .nav-logo-mark img { width: 34px; height: 34px; object-fit: contain; filter: drop-shadow(0 0 1px rgba(255,255,255,0.85)) drop-shadow(0 0 4px rgba(255,255,255,0.3)); }
+    .nav-links { display: flex; align-items: center; gap: 8px; list-style: none; }
+    .nav-links a { color: var(--text-2); text-decoration: none; font-size: 0.875rem; font-weight: 500; padding: 6px 12px; border-radius: 6px; }
+    .nav-links a:hover { color: var(--text); background: var(--surface-2); }
+    .nav-links a.active { color: var(--blue); }
+    .btn-nav { background: var(--blue); color: #000 !important; font-weight: 600 !important; padding: 7px 16px !important; border-radius: 7px !important; }
+    .page-hero { padding: 72px 0 56px; border-bottom: 1px solid var(--border); }
+    .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 16px; display: block; }
+    .page-title { font-family: 'Archivo', system-ui, sans-serif; font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 900; letter-spacing: -0.02em; line-height: 1.05; max-width: 780px; }
+    .page-sub { font-size: 1.125rem; color: var(--text-2); max-width: 620px; margin-top: 20px; line-height: 1.65; }
+    .section-title { font-family: 'Archivo', system-ui, sans-serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; margin-bottom: 32px; }
+    .oss-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+    .oss-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px; }
+    .oss-card-icon { font-size: 1.5rem; margin-bottom: 14px; }
+    .oss-card-title { font-family: 'Archivo', system-ui, sans-serif; font-weight: 700; font-size: 1.1875rem; margin-bottom: 10px; color: var(--text); }
+    .oss-card-body { font-size: 0.9375rem; color: var(--text-2); line-height: 1.7; }
+    .oss-card-body .emphasis { color: var(--text); font-weight: 600; }
+    .oss-card-detail { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-3); }
+    .showcase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; margin-top: 56px; }
+    .shot-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .shot-card img { width: 100%; height: auto; display: block; border-bottom: 1px solid var(--border); }
+    .shot-card figcaption { padding: 18px 22px; font-size: 0.92rem; line-height: 1.6; color: var(--text-2); }
+    .shot-card figcaption strong { color: var(--text); }
+    .shot-card figcaption code { font-family: monospace; font-size: 0.85em; color: var(--blue); }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--blue); color: #000; font-weight: 700; font-size: 0.9375rem; padding: 13px 26px; border-radius: 9px; text-decoration: none; }
+    .btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: var(--surface-2); border: 1px solid var(--border-light); color: var(--text); font-weight: 600; font-size: 0.9375rem; padding: 12px 24px; border-radius: 9px; text-decoration: none; }
+    footer { border-top: 1px solid var(--border); padding: 40px 0; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .footer-copy { font-size: 0.875rem; color: var(--text-3); }
+    .footer-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.875rem; color: var(--text-3); text-decoration: none; }
+    .footer-links a:hover { color: var(--text-2); }
+    @media (max-width: 768px) { .nav-links .hide-mobile { display: none; } .section { padding: 64px 0; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo"><div class="nav-logo-mark"><img src="logo.png" alt="Kestrel" /></div>Kestrel</a>
+      <ul class="nav-links">
+        <li class="hide-mobile"><a href="index.html#belief">Why Kestrel</a></li>
+        <li class="hide-mobile"><a href="healthcare.html">Healthcare</a></li>
+        <li class="hide-mobile"><a href="architecture.html" class="active">Architecture</a></li>
+        <li class="hide-mobile"><a href="developers.html">Developers</a></li>
+        <li class="hide-mobile"><a href="blog/">Blog</a></li>
+        <li><a href="https://github.com/KestrelSovereignAI/kestrel-sovereign" class="btn-nav" target="_blank" rel="noopener">GitHub &rarr;</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Architecture</span>
+    <h1 class="page-title">Three things that don't belong to the model.</h1>
+    <p class="page-sub">
+      Sovereignty isn't a feature you add on top &mdash; it's a property designed in from
+      the start. Here's exactly how identity, memory, and governance work under the hood.
+    </p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="oss-grid">
+      <div class="oss-card">
+        <div class="oss-card-icon">🔑</div>
+        <div class="oss-card-title">Portable DID identity</div>
+        <div class="oss-card-body">
+          Every agent is born with a <code style="font-family:monospace; font-size:0.875em; color:#F8C96B;">did:pkh</code> decentralized identifier &mdash; a
+          cryptographic keypair using the same <code style="font-family:monospace; font-size:0.875em; color:#F8C96B;">secp256k1</code> curve as Ethereum.
+          The agent's identity is not issued by any platform. It's generated locally,
+          owned by the user, and portable to any environment.
+        </div>
+        <div class="oss-card-detail">did:pkh:eip155:1:0x8955b8cB&hellip;</div>
+      </div>
+
+      <div class="oss-card">
+        <div class="oss-card-icon">🧠</div>
+        <div class="oss-card-title">Persistent memory you own</div>
+        <div class="oss-card-body">
+          Conversations, documents, and relationships are stored in a local SQLite knowledge
+          graph with full-text search and RAG. The memory is yours &mdash; encrypted at rest,
+          portable, and deletable on demand.
+          <br/><br/>
+          <span class="emphasis">The agent's memory doesn't live in our cloud.</span>
+        </div>
+        <div class="oss-card-detail">SQLite &middot; FTS5 &middot; Encrypted at rest</div>
+      </div>
+
+      <div class="oss-card">
+        <div class="oss-card-icon">📜</div>
+        <div class="oss-card-title">Constitutional governance</div>
+        <div class="oss-card-body">
+          Every agent runs under an audited constitution enforced <em>above</em> the LLM &mdash;
+          not inside the model, not in a prompt. Genesis audit on creation.
+          Amendment requires cryptographic signature. The model can't override it.
+          Neither can a bad prompt.
+        </div>
+        <div class="oss-card-detail">Genesis hash &middot; Amendment log &middot; Audit trail</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="container">
+    <h2 class="section-title">See it in action</h2>
+    <p style="color:var(--text-2); max-width:620px; margin-bottom:8px;">
+      Every screenshot is the real Sovereign Console running on a machine you control &mdash;
+      identity, governance, memory, privacy, and permissions, with nothing hidden in a cloud
+      you don't own.
+    </p>
+
+    <div class="showcase-grid">
+      <figure class="shot-card">
+        <img src="screenshots/identity.png" alt="Identity panel showing the agent's did:pkh decentralized identifier" loading="lazy" width="1440" height="869">
+        <figcaption><strong>Portable DID identity.</strong> Born with a <code>did:pkh</code> keypair the agent owns &mdash; not issued by any platform.</figcaption>
+      </figure>
+      <figure class="shot-card">
+        <img src="screenshots/constitution.png" alt="Constitution panel with the Kestrel Constitution and its verified hash" loading="lazy" width="1440" height="869">
+        <figcaption><strong>Constitutional governance.</strong> A hashed, tamper-evident constitution checked on every interaction.</figcaption>
+      </figure>
+      <figure class="shot-card">
+        <img src="screenshots/memory.png" alt="Knowledge graph panel showing typed memory nodes" loading="lazy" width="1440" height="869">
+        <figcaption><strong>Persistent memory you own.</strong> A local knowledge graph &mdash; encrypted, portable, deletable on demand.</figcaption>
+      </figure>
+      <figure class="shot-card">
+        <img src="screenshots/privacy.png" alt="Chat header in EPHEMERAL privacy mode using a local Ollama model" loading="lazy" width="1440" height="869">
+        <figcaption><strong>Privacy as a spectrum.</strong> EPHEMERAL routes to a local model only; NORMAL can use the cloud &mdash; you choose, per agent.</figcaption>
+      </figure>
+      <figure class="shot-card">
+        <img src="screenshots/sovereignty.png" alt="Sovereignty export result — a portable snapshot of the agent" loading="lazy" width="1440" height="869">
+        <figcaption><strong>Export everything, anytime.</strong> DID, constitution, memory, and history in one portable snapshot &mdash; restore it anywhere.</figcaption>
+      </figure>
+      <figure class="shot-card">
+        <img src="screenshots/security.png" alt="Security panel showing a blocked action after a permission is denied" loading="lazy" width="1440" height="869">
+        <figcaption><strong>Permission enforcement.</strong> Deny a capability and the agent is blocked &mdash; with an audit trail of every attempt.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="text-align:center;">
+  <div class="container">
+    <h2 class="section-title">Want to run it yourself?</h2>
+    <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+      <a href="developers.html" class="btn-primary">Get started &rarr;</a>
+      <a href="https://github.com/KestrelSovereignAI/kestrel-sovereign" class="btn-secondary" target="_blank" rel="noopener">View GitHub &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div style="display:flex; align-items:center; gap:10px; font-weight:700;"><img src="logo.png" alt="Kestrel" style="width:20px; filter:drop-shadow(0 0 1px rgba(255,255,255,0.85)) drop-shadow(0 0 4px rgba(255,255,255,0.3));" />Kestrel</div>
+        <p class="footer-copy" style="margin-top:8px;">&copy; 2026 Kestrel Sovereign, LLC. Apache 2.0.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="healthcare.html">Healthcare</a></li>
+        <li><a href="developers.html">Developers</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog/">Blog</a></li>
+        <li><a href="https://github.com/KestrelSovereignAI/kestrel-sovereign" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="mailto:admin@kestrelsovereign.com">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

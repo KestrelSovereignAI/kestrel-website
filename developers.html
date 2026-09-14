@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Developers &mdash; Kestrel</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <meta name="description" content="Get a sovereign AI agent running in minutes. Open source, Apache 2.0, Python + FastAPI + uv. Self-host anywhere, run any LLM provider." />
+  <link rel="canonical" href="https://kestrelsovereign.com/developers.html" />
+  <meta property="og:title" content="Developers &mdash; Kestrel" />
+  <meta property="og:description" content="One command to create an agent. Another to start it. Open source, self-hostable, provider-agnostic." />
+  <meta property="og:url" content="https://kestrelsovereign.com/developers.html" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0A0F; --surface: #12121A; --surface-2: #1A1A22; --border: #26262E; --border-light: #3A3A42;
+      --blue: #F0A828; --green: #34D399; --indigo: #F0A828; --text: #F5F5F2; --text-2: #C8C4B8; --text-3: #8A8578;
+    }
+    .display { font-family: 'Archivo', system-ui, sans-serif; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, sans-serif; font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 96px 0; }
+    nav { position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border); background: rgba(10,10,15,0.88); backdrop-filter: blur(12px); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .nav-logo { font-weight: 700; font-size: 1.125rem; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+    .nav-logo-mark img { width: 34px; height: 34px; object-fit: contain; filter: drop-shadow(0 0 1px rgba(255,255,255,0.85)) drop-shadow(0 0 4px rgba(255,255,255,0.3)); }
+    .nav-links { display: flex; align-items: center; gap: 8px; list-style: none; }
+    .nav-links a { color: var(--text-2); text-decoration: none; font-size: 0.875rem; font-weight: 500; padding: 6px 12px; border-radius: 6px; }
+    .nav-links a:hover { color: var(--text); background: var(--surface-2); }
+    .nav-links a.active { color: var(--blue); }
+    .btn-nav { background: var(--blue); color: #000 !important; font-weight: 600 !important; padding: 7px 16px !important; border-radius: 7px !important; }
+    .page-hero { padding: 72px 0 56px; border-bottom: 1px solid var(--border); }
+    .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 16px; display: block; }
+    .page-title { font-family: 'Archivo', system-ui, sans-serif; font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 900; letter-spacing: -0.02em; line-height: 1.05; max-width: 780px; }
+    .page-sub { font-size: 1.125rem; color: var(--text-2); max-width: 620px; margin-top: 20px; line-height: 1.65; }
+    .section-title { font-family: 'Archivo', system-ui, sans-serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; margin-bottom: 16px; }
+    .code-block { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .code-header { display: flex; align-items: center; gap: 8px; padding: 12px 16px; border-bottom: 1px solid var(--border); background: var(--surface-2); }
+    .code-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-red { background: #FF5F57; } .dot-yellow { background: #FEBC2E; } .dot-green { background: #28C840; }
+    .code-filename { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-3); margin-left: 4px; }
+    .code-body { padding: 28px; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; line-height: 1.85; overflow-x: auto; }
+    .c-comment { color: #6B7280; } .c-keyword { color: var(--blue); } .c-string { color: var(--green); }
+    .oss-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 40px; }
+    .oss-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+    .oss-card-icon { font-size: 1.5rem; margin-bottom: 12px; }
+    .oss-card-title { font-weight: 700; font-size: 1rem; margin-bottom: 6px; color: var(--text); }
+    .oss-card-body { font-size: 0.875rem; color: var(--text-2); line-height: 1.6; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--blue); color: #000; font-weight: 700; font-size: 0.9375rem; padding: 13px 26px; border-radius: 9px; text-decoration: none; }
+    .btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: var(--surface-2); border: 1px solid var(--border-light); color: var(--text); font-weight: 600; font-size: 0.9375rem; padding: 12px 24px; border-radius: 9px; text-decoration: none; }
+    footer { border-top: 1px solid var(--border); padding: 40px 0; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .footer-copy { font-size: 0.875rem; color: var(--text-3); }
+    .footer-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.875rem; color: var(--text-3); text-decoration: none; }
+    .footer-links a:hover { color: var(--text-2); }
+    @media (max-width: 768px) { .nav-links .hide-mobile { display: none; } .section { padding: 64px 0; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo"><div class="nav-logo-mark"><img src="logo.png" alt="Kestrel" /></div>Kestrel</a>
+      <ul class="nav-links">
+        <li class="hide-mobile"><a href="index.html#belief">Why Kestrel</a></li>
+        <li class="hide-mobile"><a href="healthcare.html">Healthcare</a></li>
+        <li class="hide-mobile"><a href="architecture.html">Architecture</a></li>
+        <li class="hide-mobile"><a href="developers.html" class="active">Developers</a></li>
+        <li class="hide-mobile"><a href="blog/">Blog</a></li>
+        <li><a href="https://github.com/KestrelSovereignAI/kestrel-sovereign" class="btn-nav" target="_blank" rel="noopener">GitHub &rarr;</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Developers</span>
+    <h1 class="page-title">Running in minutes, not weeks.</h1>
+    <p class="page-sub">
+      One command to create an agent. Another to start it. Your agent is up with a full
+      web UI, DID identity, memory store, and constitutional protections baked in.
+    </p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="code-block" style="max-width:720px;">
+      <div class="code-header">
+        <div class="code-dot dot-red"></div><div class="code-dot dot-yellow"></div><div class="code-dot dot-green"></div>
+        <div class="code-filename">terminal</div>
+      </div>
+      <div class="code-body">
+<span class="c-comment"># Install and set up</span>
+<span class="c-keyword">git</span> clone github.com/KestrelSovereignAI/kestrel-sovereign
+<span class="c-keyword">cd</span> kestrel-sovereign
+<span class="c-keyword">uv</span> sync
+
+<span class="c-comment"># Create your agent &mdash; gets a DID, memory store,</span>
+<span class="c-comment"># constitution, and web UI automatically</span>
+<span class="c-keyword">uv</span> run kestrel create MyAgent
+
+<span class="c-comment"># Start it</span>
+<span class="c-keyword">uv</span> run kestrel start MyAgent
+
+<span class="c-comment"># &rarr; Agent running at http://localhost:8888</span>
+<span class="c-comment"># &rarr; DID: did:pkh:eip155:1:0x...</span>
+<span class="c-comment"># &rarr; Constitution hash: 0xf3a2...</span>
+<span class="c-comment"># &rarr; Memory store: encrypted, local, yours</span>
+      </div>
+    </div>
+    <a href="https://github.com/KestrelSovereignAI/kestrel-sovereign#readme" class="btn-secondary" target="_blank" rel="noopener" style="margin-top:24px;">Read the full quickstart &rarr;</a>
+  </div>
+</section>
+
+<section class="section" style="background:var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="container">
+    <h2 class="section-title">The stack</h2>
+    <p style="color:var(--text-2); max-width:600px;">Apache 2.0 licensed. No lock-in by design.</p>
+
+    <div class="oss-grid">
+      <div class="oss-card">
+        <div class="oss-card-icon">⚖️</div>
+        <div class="oss-card-title">Apache 2.0 Licensed</div>
+        <div class="oss-card-body">Use it, fork it, build on it. No hidden restrictions on commercial use or modification.</div>
+      </div>
+      <div class="oss-card">
+        <div class="oss-card-icon">🔒</div>
+        <div class="oss-card-title">No Platform Lock-In</div>
+        <div class="oss-card-body">Your agent's identity and memory are not hosted by us. Self-host anywhere &mdash; your laptop, your server, your cloud.</div>
+      </div>
+      <div class="oss-card">
+        <div class="oss-card-icon">🔌</div>
+        <div class="oss-card-title">Multi-LLM Support</div>
+        <div class="oss-card-body">Anthropic, OpenAI, Gemini, Ollama &mdash; run fully local. The framework is provider-agnostic by design.</div>
+      </div>
+      <div class="oss-card">
+        <div class="oss-card-icon">🐍</div>
+        <div class="oss-card-title">Python &middot; FastAPI &middot; uv</div>
+        <div class="oss-card-body">Modern Python stack with a clean install story. One command to set up, runs on Mac, Linux, and Windows.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="text-align:center;">
+  <div class="container">
+    <h2 class="section-title">Want the technical detail behind it?</h2>
+    <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+      <a href="architecture.html" class="btn-primary">Read the architecture &rarr;</a>
+      <a href="https://github.com/KestrelSovereignAI/kestrel-sovereign/blob/main/CONTRIBUTING.md" class="btn-secondary" target="_blank" rel="noopener">Contributing guide &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div style="display:flex; align-items:center; gap:10px; font-weight:700;"><img src="logo.png" alt="Kestrel" style="width:20px; filter:drop-shadow(0 0 1px rgba(255,255,255,0.85)) drop-shadow(0 0 4px rgba(255,255,255,0.3));" />Kestrel</div>
+        <p class="footer-copy" style="margin-top:8px;">&copy; 2026 Kestrel Sovereign, LLC. Apache 2.0.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="healthcare.html">Healthcare</a></li>
+        <li><a href="architecture.html">Architecture</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog/">Blog</a></li>
+        <li><a href="https://github.com/KestrelSovereignAI/kestrel-sovereign" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="mailto:admin@kestrelsovereign.com">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
