@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About &mdash; Kestrel</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <meta name="description" content="Kestrel Sovereign, LLC: an early-stage, founder-funded company building sovereign AI infrastructure, already live in a real clinical deployment." />
+  <link rel="canonical" href="https://kestrelsovereign.com/about.html" />
+  <meta property="og:title" content="About &mdash; Kestrel" />
+  <meta property="og:description" content="Real product. Real deployment. Early-stage and founder-funded." />
+  <meta property="og:url" content="https://kestrelsovereign.com/about.html" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0A0F; --surface: #12121A; --surface-2: #1A1A22; --border: #26262E; --border-light: #3A3A42;
+      --blue: #F0A828; --green: #34D399; --text: #F5F5F2; --text-2: #C8C4B8; --text-3: #8A8578;
+    }
+    .display { font-family: 'Archivo', system-ui, sans-serif; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, sans-serif; font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 96px 0; }
+    nav { position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border); background: rgba(10,10,15,0.88); backdrop-filter: blur(12px); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .nav-logo { font-weight: 700; font-size: 1.125rem; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+    .nav-logo-mark img { width: 34px; height: 34px; object-fit: contain; filter: drop-shadow(0 0 1px rgba(255,255,255,0.85)) drop-shadow(0 0 4px rgba(255,255,255,0.3)); }
+    .nav-links { display: flex; align-items: center; gap: 8px; list-style: none; }
+    .nav-links a { color: var(--text-2); text-decoration: none; font-size: 0.875rem; font-weight: 500; padding: 6px 12px; border-radius: 6px; }
+    .nav-links a:hover { color: var(--text); background: var(--surface-2); }
+    .btn-nav { background: var(--blue); color: #000 !important; font-weight: 600 !important; padding: 7px 16px !important; border-radius: 7px !important; }
+    .page-hero { padding: 72px 0 56px; border-bottom: 1px solid var(--border); }
+    .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 16px; display: block; }
+    .page-title { font-family: 'Archivo', system-ui, sans-serif; font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 900; letter-spacing: -0.02em; line-height: 1.05; max-width: 780px; }
+    .page-sub { font-size: 1.125rem; color: var(--text-2); max-width: 620px; margin-top: 20px; line-height: 1.65; }
+    .oss-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .oss-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px; }
+    .oss-card-icon { font-size: 1.5rem; margin-bottom: 14px; }
+    .oss-card-title { font-family: 'Archivo', system-ui, sans-serif; font-weight: 700; font-size: 1.1875rem; margin-bottom: 10px; color: var(--text); }
+    .oss-card-body { font-size: 0.9375rem; color: var(--text-2); line-height: 1.7; }
+    footer { border-top: 1px solid var(--border); padding: 40px 0; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .footer-copy { font-size: 0.875rem; color: var(--text-3); }
+    .footer-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.875rem; color: var(--text-3); text-decoration: none; }
+    .footer-links a:hover { color: var(--text-2); }
+    @media (max-width: 768px) { .nav-links .hide-mobile { display: none; } .section { padding: 64px 0; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo"><div class="nav-logo-mark"><img src="logo.png" alt="Kestrel" /></div>Kestrel</a>
+      <ul class="nav-links">
+        <li class="hide-mobile"><a href="index.html#belief">Why Kestrel</a></li>
+        <li class="hide-mobile"><a href="healthcare.html">Healthcare</a></li>
+        <li class="hide-mobile"><a href="architecture.html">Architecture</a></li>
+        <li class="hide-mobile"><a href="developers.html">Developers</a></li>
+        <li class="hide-mobile"><a href="blog/">Blog</a></li>
+        <li><a href="https://github.com/KestrelSovereignAI/kestrel-sovereign" class="btn-nav" target="_blank" rel="noopener">GitHub &rarr;</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <span class="eyebrow">About</span>
+    <h1 class="page-title">Real product. Real deployment.</h1>
+    <p class="page-sub">Kestrel Sovereign, LLC, in two facts &mdash; who's using it, and where we are today.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="oss-grid">
+      <div class="oss-card">
+        <div class="oss-card-icon">🏥</div>
+        <div class="oss-card-title">Live in a real clinical workflow</div>
+        <div class="oss-card-body">
+          Kestrel-RCS is running in a production pilot with a home health provider, embedded
+          directly in their remote patient monitoring platform &mdash; real patients, real care
+          staff, real data. Not a demo environment.
+        </div>
+      </div>
+      <div class="oss-card">
+        <div class="oss-card-icon">🌱</div>
+        <div class="oss-card-title">Early, and moving toward revenue</div>
+        <div class="oss-card-body">
+          We're early-stage and bootstrapped. The pilot above is converting to a paid, ongoing
+          partnership this fall &mdash; our first commercial contract.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div style="display:flex; align-items:center; gap:10px; font-weight:700;"><img src="logo.png" alt="Kestrel" style="width:20px; filter:drop-shadow(0 0 1px rgba(255,255,255,0.85)) drop-shadow(0 0 4px rgba(255,255,255,0.3));" />Kestrel</div>
+        <p class="footer-copy" style="margin-top:8px;">&copy; 2026 Kestrel Sovereign, LLC. Apache 2.0.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="healthcare.html">Healthcare</a></li>
+        <li><a href="architecture.html">Architecture</a></li>
+        <li><a href="developers.html">Developers</a></li>
+        <li><a href="blog/">Blog</a></li>
+        <li><a href="https://github.com/KestrelSovereignAI/kestrel-sovereign" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="mailto:admin@kestrelsovereign.com">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
