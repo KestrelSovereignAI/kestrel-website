@@ -152,11 +152,11 @@
     .provider-chip { font-family: 'JetBrains Mono', monospace; font-size: 0.8125rem; color: var(--text-3); border: 1px solid var(--border); border-radius: 100px; padding: 6px 14px; }
 
     /* ─── Companion / Navigator relationship diagram ─── */
-    .relationship-diagram { max-width: 380px; margin: 56px auto 0; display: flex; flex-direction: column; align-items: center; }
-    .rel-node { font-family: 'Archivo', system-ui, sans-serif; font-weight: 800; font-size: 0.9375rem; letter-spacing: 0.04em; color: var(--text-2); padding: 12px 0; }
-    .rel-node.accent { color: var(--blue); }
-    .rel-node.kestrel { color: var(--text); background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 32px; }
-    .rel-connector { font-size: 1.125rem; color: var(--border-light); }
+    .relationship-diagram { max-width: 300px; margin: 64px auto 0; display: flex; flex-direction: column; align-items: center; }
+    .rel-node { width: 100%; text-align: center; font-family: 'Archivo', system-ui, sans-serif; font-weight: 800; font-size: 0.8125rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-2); background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; }
+    .rel-node.accent { color: var(--blue); background: rgba(240, 168, 40, 0.07); border-color: rgba(240, 168, 40, 0.35); }
+    .rel-node.kestrel { color: #0A0A0F; background: var(--blue); border: none; font-size: 0.9375rem; padding: 17px 18px; box-shadow: 0 14px 34px -12px rgba(240, 168, 40, 0.55); }
+    .rel-connector { color: var(--border-light); line-height: 0; padding: 5px 0; }
 
     /* ─── Simplified pillars (no cards) ─── */
     .pillars-simple { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; margin-top: 56px; }
@@ -308,13 +308,13 @@
 
     <div class="relationship-diagram reveal">
       <div class="rel-node">PERSON</div>
-      <div class="rel-connector">&updownarrow;</div>
+      <div class="rel-connector" aria-hidden="true"><svg width="14" height="32" viewBox="0 0 14 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4 L3 9 M7 4 L11 9 M7 4 V28 M7 28 L3 23 M7 28 L11 23"/></svg></div>
       <div class="rel-node accent">COMPANION</div>
-      <div class="rel-connector">&updownarrow;</div>
+      <div class="rel-connector" aria-hidden="true"><svg width="14" height="32" viewBox="0 0 14 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4 L3 9 M7 4 L11 9 M7 4 V28 M7 28 L3 23 M7 28 L11 23"/></svg></div>
       <div class="rel-node kestrel">KESTREL</div>
-      <div class="rel-connector">&updownarrow;</div>
+      <div class="rel-connector" aria-hidden="true"><svg width="14" height="32" viewBox="0 0 14 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4 L3 9 M7 4 L11 9 M7 4 V28 M7 28 L3 23 M7 28 L11 23"/></svg></div>
       <div class="rel-node accent">NAVIGATOR</div>
-      <div class="rel-connector">&updownarrow;</div>
+      <div class="rel-connector" aria-hidden="true"><svg width="14" height="32" viewBox="0 0 14 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4 L3 9 M7 4 L11 9 M7 4 V28 M7 28 L3 23 M7 28 L11 23"/></svg></div>
       <div class="rel-node">HUMAN SUPPORTER</div>
     </div>
 
