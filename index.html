@@ -168,6 +168,17 @@
     /* ─── Product proof ─── */
     .proof-shot { border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin: 56px 0; box-shadow: 0 40px 80px -30px rgba(0,0,0,0.6); }
     .proof-shot img { width: 100%; height: auto; display: block; }
+    .showcase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 40px; text-align: left; }
+    .shot-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .shot-card img { width: 100%; height: auto; display: block; border-bottom: 1px solid var(--border); }
+    .shot-card figcaption { padding: 16px 20px; font-size: 0.875rem; line-height: 1.6; color: var(--text-2); }
+    .shot-card figcaption strong { color: var(--text); }
+    .shot-card figcaption code { font-family: 'JetBrains Mono', monospace; font-size: 0.85em; color: var(--blue); }
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-top: 48px; text-align: left; }
+    .team-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 30px 32px; }
+    .team-name { font-family: 'Archivo', system-ui, sans-serif; font-weight: 700; font-size: 1.1875rem; color: var(--text); letter-spacing: -0.01em; }
+    .team-role { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); margin-top: 8px; }
+    .team-bio { font-size: 0.9375rem; line-height: 1.75; color: var(--text-2); margin-top: 18px; }
 
     /* ─── Closing manifesto ─── */
     .closing-section { text-align: center; padding: 160px 0 140px; }
@@ -211,6 +222,7 @@
         <li class="hide-mobile"><a href="healthcare.html">Healthcare</a></li>
         <li class="hide-mobile"><a href="architecture.html">Architecture</a></li>
         <li class="hide-mobile"><a href="developers.html">Developers</a></li>
+        <li class="hide-mobile"><a href="about.html">About</a></li>
         <li class="hide-mobile"><a href="blog/">Blog</a></li>
         <li>
           <a href="https://github.com/KestrelSovereignAI/kestrel-sovereign" class="btn-nav" target="_blank" rel="noopener">
@@ -392,6 +404,21 @@
       <img src="screenshots/identity.png" alt="The Kestrel Sovereign Console, showing an agent's portable did:pkh identity" loading="lazy" width="1440" height="869" />
     </div>
 
+    <div class="showcase-grid reveal">
+      <figure class="shot-card">
+        <img src="screenshots/constitution.png" alt="Constitution panel with the Kestrel Constitution and its verified hash" loading="lazy" width="1440" height="869" />
+        <figcaption><strong>Constitutional governance.</strong> A hashed, tamper-evident constitution checked on every interaction.</figcaption>
+      </figure>
+      <figure class="shot-card">
+        <img src="screenshots/memory.png" alt="Knowledge graph panel showing typed memory nodes" loading="lazy" width="1440" height="869" />
+        <figcaption><strong>Persistent memory you own.</strong> A local knowledge graph &mdash; encrypted, portable, deletable on demand.</figcaption>
+      </figure>
+      <figure class="shot-card">
+        <img src="screenshots/sovereignty.png" alt="Export panel showing a portable snapshot of identity, constitution, memory, and history" loading="lazy" width="1440" height="869" />
+        <figcaption><strong>Export everything, anytime.</strong> DID, constitution, memory, and history in one portable snapshot &mdash; restore it anywhere.</figcaption>
+      </figure>
+    </div>
+
     <div class="proof-bar" style="justify-content:center;">
       <div class="proof-item" style="text-align:center;">
         <div class="proof-number">1,400+</div>
@@ -433,6 +460,38 @@
     </div>
 
     <a href="https://github.com/KestrelSovereignAI/kestrel-sovereign" class="btn-text" style="display:inline-block; margin-top:40px;" target="_blank" rel="noopener">Explore on GitHub &rarr;</a>
+  </div>
+</section>
+
+<!-- ─── Team ─── -->
+<section class="section" style="background:var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border);" id="team">
+  <div class="container-narrow reveal" style="text-align:center;">
+    <h2 class="belief-line" style="font-size:clamp(1.5rem, 4vw, 2.25rem);">Who's building it.</h2>
+    <p class="belief-body" style="margin-top:16px;">Two founders, three decades each in enterprise technology.</p>
+  </div>
+
+  <div class="container">
+    <div class="team-grid reveal">
+      <div class="team-card">
+        <div class="team-name">Gabi Oliveira</div>
+        <div class="team-role">Co-founder &middot; Business &amp; Operations</div>
+        <p class="team-bio">
+          Twenty years in enterprise technology, including a decade at Dell Technologies directing
+          global IT transformation programs across a $50M portfolio and 100+ teams. Authorized PMP
+          instructor and certified SAFe practice consultant. Now full-time on Kestrel.
+        </p>
+      </div>
+      <div class="team-card">
+        <div class="team-name">Jason Schulz</div>
+        <div class="team-role">Co-founder &middot; Product &amp; Technology</div>
+        <p class="team-bio">
+          Thirty years in software engineering and data science, with an MS in Computer Science from
+          Johns Hopkins. Previously CTO at One Healthcare Solution, where he built a cloud-based EHR
+          platform and deployed LLM agents for patient monitoring and care-team communication &mdash;
+          the problem space Kestrel's healthcare pilot runs in today.
+        </p>
+      </div>
+    </div>
   </div>
 </section>
 
