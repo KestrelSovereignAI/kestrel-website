@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Architecture &mdash; Kestrel</title>
+  <title>Architecture | Kestrel</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
   <meta name="description" content="How Kestrel actually works: portable DID identity, a local encrypted memory store, and constitutional governance enforced above the LLM. The technical proof behind the sovereignty claim." />
   <link rel="canonical" href="https://kestrelsovereign.com/architecture.html" />
-  <meta property="og:title" content="Architecture &mdash; Kestrel" />
+  <meta property="og:title" content="Architecture | Kestrel" />
   <meta property="og:description" content="Portable DID identity, encrypted local memory, and constitutional governance enforced above the LLM." />
   <meta property="og:url" content="https://kestrelsovereign.com/architecture.html" />
   <meta property="og:type" content="website" />
@@ -93,7 +93,7 @@
     <span class="eyebrow">Architecture</span>
     <h1 class="page-title">Three things that don't belong to the model.</h1>
     <p class="page-sub">
-      Sovereignty isn't a feature you add on top &mdash; it's a property designed in from
+      Sovereignty isn't a feature you add on top. It's a property designed in from
       the start. Here's exactly how identity, memory, and governance work under the hood.
     </p>
   </div>
@@ -106,7 +106,7 @@
         <div class="oss-card-icon">🔑</div>
         <div class="oss-card-title">Portable DID identity</div>
         <div class="oss-card-body">
-          Every agent is born with a <code style="font-family:monospace; font-size:0.875em; color:#F8C96B;">did:pkh</code> decentralized identifier &mdash; a
+          Every agent is born with a <code style="font-family:monospace; font-size:0.875em; color:#F8C96B;">did:pkh</code> decentralized identifier, a
           cryptographic keypair using the same <code style="font-family:monospace; font-size:0.875em; color:#F8C96B;">secp256k1</code> curve as Ethereum.
           The agent's identity is not issued by any platform. It's generated locally,
           owned by the user, and portable to any environment.
@@ -119,7 +119,7 @@
         <div class="oss-card-title">Persistent memory you own</div>
         <div class="oss-card-body">
           Conversations, documents, and relationships are stored in a local SQLite knowledge
-          graph with full-text search and RAG. The memory is yours &mdash; encrypted at rest,
+          graph with full-text search and RAG. The memory is yours: encrypted at rest,
           portable, and deletable on demand.
           <br/><br/>
           <span class="emphasis">The agent's memory doesn't live in our cloud.</span>
@@ -131,7 +131,7 @@
         <div class="oss-card-icon">📜</div>
         <div class="oss-card-title">Constitutional governance</div>
         <div class="oss-card-body">
-          Every agent runs under an audited constitution enforced <em>above</em> the LLM &mdash;
+          Every agent runs under an audited constitution enforced <em>above</em> the LLM:
           not inside the model, not in a prompt. Genesis audit on creation.
           Amendment requires cryptographic signature. The model can't override it.
           Neither can a bad prompt.
@@ -146,7 +146,7 @@
   <div class="container">
     <h2 class="section-title">See it in action</h2>
     <p style="color:var(--text-2); max-width:620px; margin-bottom:8px;">
-      Every screenshot is the real Sovereign Console running on a machine you control &mdash;
+      Every screenshot is the real Sovereign Console running on a machine you control:
       identity, governance, memory, privacy, and permissions, with nothing hidden in a cloud
       you don't own.
     </p>
@@ -154,7 +154,7 @@
     <div class="showcase-grid">
       <figure class="shot-card">
         <img src="screenshots/identity.png" alt="Identity panel showing the agent's did:pkh decentralized identifier" loading="lazy" width="1440" height="869">
-        <figcaption><strong>Portable DID identity.</strong> Born with a <code>did:pkh</code> keypair the agent owns &mdash; not issued by any platform.</figcaption>
+        <figcaption><strong>Portable DID identity.</strong> Born with a <code>did:pkh</code> keypair the agent owns, not issued by any platform.</figcaption>
       </figure>
       <figure class="shot-card">
         <img src="screenshots/constitution.png" alt="Constitution panel with the Kestrel Constitution and its verified hash" loading="lazy" width="1440" height="869">
@@ -162,19 +162,19 @@
       </figure>
       <figure class="shot-card">
         <img src="screenshots/memory.png" alt="Knowledge graph panel showing typed memory nodes" loading="lazy" width="1440" height="869">
-        <figcaption><strong>Persistent memory you own.</strong> A local knowledge graph &mdash; encrypted, portable, deletable on demand.</figcaption>
+        <figcaption><strong>Persistent memory you own.</strong> A local knowledge graph: encrypted, portable, deletable on demand.</figcaption>
       </figure>
       <figure class="shot-card">
         <img src="screenshots/privacy.png" alt="Chat header in EPHEMERAL privacy mode using a local Ollama model" loading="lazy" width="1440" height="869">
-        <figcaption><strong>Privacy as a spectrum.</strong> EPHEMERAL routes to a local model only; NORMAL can use the cloud &mdash; you choose, per agent.</figcaption>
+        <figcaption><strong>Privacy as a spectrum.</strong> EPHEMERAL routes to a local model only; NORMAL can use the cloud. You choose, per agent.</figcaption>
       </figure>
       <figure class="shot-card">
-        <img src="screenshots/sovereignty.png" alt="Sovereignty export result — a portable snapshot of the agent" loading="lazy" width="1440" height="869">
-        <figcaption><strong>Export everything, anytime.</strong> DID, constitution, memory, and history in one portable snapshot &mdash; restore it anywhere.</figcaption>
+        <img src="screenshots/sovereignty.png" alt="Sovereignty export result, a portable snapshot of the agent" loading="lazy" width="1440" height="869">
+        <figcaption><strong>Export everything, anytime.</strong> DID, constitution, memory, and history in one portable snapshot. Restore it anywhere.</figcaption>
       </figure>
       <figure class="shot-card">
         <img src="screenshots/security.png" alt="Security panel showing a blocked action after a permission is denied" loading="lazy" width="1440" height="869">
-        <figcaption><strong>Permission enforcement.</strong> Deny a capability and the agent is blocked &mdash; with an audit trail of every attempt.</figcaption>
+        <figcaption><strong>Permission enforcement.</strong> Deny a capability and the agent is blocked, with an audit trail of every attempt.</figcaption>
       </figure>
     </div>
   </div>
@@ -195,7 +195,7 @@
     <div class="footer-inner">
       <div>
         <div style="display:flex; align-items:center; gap:10px; font-weight:700;"><img src="logo.png" alt="Kestrel" style="width:20px; filter:drop-shadow(0 0 1px rgba(255,255,255,0.85)) drop-shadow(0 0 4px rgba(255,255,255,0.3));" />Kestrel</div>
-        <p class="footer-copy" style="margin-top:8px;">&copy; 2026 Kestrel Sovereign, LLC &mdash; registered in Liberty Hill, Texas. Apache 2.0.</p>
+        <p class="footer-copy" style="margin-top:8px;">&copy; 2026 Kestrel Sovereign, LLC. Registered in Liberty Hill, Texas. Apache 2.0.</p>
       </div>
       <ul class="footer-links">
         <li><a href="healthcare.html">Healthcare</a></li>
